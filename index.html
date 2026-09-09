@@ -3,322 +3,242 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Royal Enfield Meteor Supernova – Delivery Countdown</title>
-
+<title>Ajay's Royal Enfield – 40th Birthday Countdown</title>
 <style>
-    * { box-sizing: border-box; }
-
-    html, body {
-        margin: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        font-family: Arial, Helvetica, sans-serif;
-        color: white;
-        background: #080808;
-    }
-
-    body {
-        min-height: 100vh;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    /* Full-screen bike background */
-    .background {
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-
-        background-image:
-            linear-gradient(
-                90deg,
-                rgba(0,0,0,.82) 0%,
-                rgba(0,0,0,.48) 38%,
-                rgba(0,0,0,.15) 72%,
-                rgba(0,0,0,.35) 100%
-            ),
-            linear-gradient(
-                0deg,
-                rgba(0,0,0,.55),
-                rgba(0,0,0,.08) 55%,
-                rgba(0,0,0,.35)
-            ),
-            url("https://royalenfieldmotorcycles.co.nz/wp-content/uploads/sites/2/2026/01/Meteor-Hero-1.png");
-
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        transform: scale(1.02);
-    }
-
-    .background::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-            radial-gradient(
-                circle at 72% 48%,
-                transparent 0 22%,
-                rgba(0,0,0,.30) 72%,
-                rgba(0,0,0,.62) 100%
-            );
-    }
-
-    .content {
-        position: relative;
-        z-index: 1;
-        width: min(1180px, 94vw);
-        text-align: left;
-        padding: 40px;
-    }
-
-    .brand {
-        font-size: clamp(14px, 2vw, 20px);
-        letter-spacing: 5px;
-        text-transform: uppercase;
-        opacity: .9;
-        margin-bottom: 12px;
-        font-weight: 600;
-    }
-
-    h1 {
-        margin: 0;
-        font-size: clamp(42px, 6.3vw, 86px);
-        line-height: .95;
-        letter-spacing: -3px;
-        text-transform: uppercase;
-        text-shadow: 0 5px 25px rgba(0,0,0,.7);
-        max-width: 800px;
-    }
-
-    .subtitle {
-        margin: 18px 0 34px;
-        font-size: clamp(17px, 2.2vw, 26px);
-        color: rgba(255,255,255,.9);
-    }
-
-    .delivery {
-        display: inline-block;
-        padding: 10px 17px;
-        margin-bottom: 20px;
-        border: 1px solid rgba(255,255,255,.3);
-        border-radius: 999px;
-        background: rgba(0,0,0,.28);
-        backdrop-filter: blur(8px);
-        font-size: 14px;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-    }
-
-    /* Keep all countdown items on one line */
-    .countdown {
-        display: flex;
-        gap: 10px;
-        flex-wrap: nowrap;
-        align-items: center;
-    }
-
-    .unit {
-        width: 96px;
-        min-width: 96px;
-        padding: 13px 8px 11px;
-        border-radius: 15px;
-        background: rgba(0,0,0,.42);
-        border: 1px solid rgba(255,255,255,.18);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 12px 35px rgba(0,0,0,.28);
-        text-align: center;
-    }
-
-    .number {
-        display: block;
-        font-size: 36px;
-        font-weight: 800;
-        line-height: 1;
-    }
-
-    .label {
-        display: block;
-        margin-top: 6px;
-        font-size: 9px;
-        letter-spacing: 1.4px;
-        text-transform: uppercase;
-        opacity: .7;
-    }
-
-    .footer {
-        margin-top: 20px;
-        font-size: 12px;
-        opacity: .65;
-    }
-
-    @media (max-width: 700px) {
-
-        .content {
-            padding: 20px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .background {
-            background-position: 62% center;
-        }
-
-        h1 {
-            font-size: clamp(36px, 11vw, 58px);
-            letter-spacing: -2px;
-            margin: auto;
-        }
-
-        .subtitle {
-            margin: 14px 0 24px;
-        }
-
-        .delivery {
-            font-size: 10px;
-            padding: 8px 12px;
-            letter-spacing: .8px;
-            white-space: nowrap;
-        }
-
-        .countdown {
-            width: 100%;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .unit {
-            width: 21vw;
-            min-width: 0;
-            max-width: 82px;
-            padding: 11px 4px 9px;
-            border-radius: 12px;
-        }
-
-        .number {
-            font-size: clamp(25px, 8vw, 34px);
-        }
-
-        .label {
-            font-size: 7px;
-            letter-spacing: .8px;
-            margin-top: 5px;
-        }
-
-        .footer {
-            font-size: 10px;
-            margin-top: 15px;
-        }
-    }
+* { box-sizing: border-box; }
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background: #080808;
+}
+body {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-image:
+        linear-gradient(90deg, rgba(0,0,0,.84) 0%, rgba(0,0,0,.50) 40%, rgba(0,0,0,.14) 72%, rgba(0,0,0,.36) 100%),
+        linear-gradient(0deg, rgba(0,0,0,.62), rgba(0,0,0,.04) 55%, rgba(0,0,0,.34)),
+        url("https://royalenfieldmotorcycles.co.nz/wp-content/uploads/sites/2/2026/01/Meteor-Hero-1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.02);
+}
+.background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 72% 48%, transparent 0 20%, rgba(0,0,0,.28) 68%, rgba(0,0,0,.66) 100%);
+}
+.glow {
+    position: fixed;
+    width: 440px;
+    height: 440px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,190,70,.15), transparent 68%);
+    filter: blur(5px);
+    z-index: 1;
+    animation: pulseGlow 3.5s ease-in-out infinite;
+    pointer-events: none;
+}
+.glow.one { top: -130px; left: -100px; }
+.glow.two { right: -120px; bottom: -160px; animation-delay: 1.2s; }
+@keyframes pulseGlow {
+    0%,100% { transform: scale(.92); opacity: .55; }
+    50% { transform: scale(1.08); opacity: 1; }
+}
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 7px;
+    height: 13px;
+    border-radius: 2px;
+    z-index: 2;
+    opacity: .75;
+    animation: fall linear infinite;
+}
+@keyframes fall {
+    to { transform: translateY(110vh) rotate(720deg); }
+}
+.content {
+    position: relative;
+    z-index: 3;
+    width: min(1180px, 94vw);
+    padding: 40px;
+    text-align: left;
+}
+.brand {
+    font-size: clamp(15px, 2vw, 21px);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    opacity: .94;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+.owner {
+    margin: 0 0 8px;
+    font-size: clamp(42px, 7vw, 84px);
+    line-height: .95;
+    letter-spacing: -2.5px;
+    text-transform: uppercase;
+    text-shadow: 0 5px 25px rgba(0,0,0,.72);
+}
+.highlight {
+    color: #f5c36b;
+}
+.milestone {
+    margin: 14px 0 8px;
+    font-size: clamp(19px, 2.5vw, 30px);
+    font-weight: 700;
+}
+.subtitle {
+    max-width: 660px;
+    margin: 6px 0 28px;
+    font-size: clamp(15px, 1.8vw, 21px);
+    line-height: 1.45;
+    color: rgba(255,255,255,.88);
+}
+.delivery {
+    display: inline-block;
+    padding: 10px 16px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 999px;
+    background: rgba(0,0,0,.30);
+    backdrop-filter: blur(8px);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+.countdown {
+    display: flex;
+    gap: 9px;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.unit {
+    width: 94px;
+    min-width: 94px;
+    padding: 12px 7px 10px;
+    border-radius: 14px;
+    background: rgba(0,0,0,.43);
+    border: 1px solid rgba(255,255,255,.18);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 12px 35px rgba(0,0,0,.28);
+    text-align: center;
+}
+.number {
+    display: block;
+    font-size: 35px;
+    font-weight: 800;
+    line-height: 1;
+}
+.label {
+    display: block;
+    margin-top: 6px;
+    font-size: 8px;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+    opacity: .7;
+}
+.footer {
+    margin-top: 18px;
+    font-size: 12px;
+    opacity: .72;
+    letter-spacing: .4px;
+}
+@media (max-width: 700px) {
+    .content { padding: 20px; width: 100%; text-align: center; }
+    .background { background-position: 62% center; }
+    .owner { font-size: clamp(34px, 11vw, 56px); margin-inline: auto; }
+    .subtitle { margin-left: auto; margin-right: auto; }
+    .delivery { font-size: 9px; padding: 8px 10px; letter-spacing: .6px; }
+    .countdown { width: 100%; justify-content: center; gap: 5px; }
+    .unit { width: 21vw; min-width: 0; max-width: 80px; padding: 10px 3px 8px; }
+    .number { font-size: clamp(24px, 8vw, 33px); }
+    .label { font-size: 6.5px; letter-spacing: .7px; }
+}
 </style>
 </head>
-
 <body>
-
 <div class="background"></div>
+<div class="glow one"></div>
+<div class="glow two"></div>
 
 <main class="content">
-
     <div class="brand">Royal Enfield</div>
-
-    <h1>Meteor<br>Supernova</h1>
-
+    <h1 class="owner">Ajay's <span class="highlight">40th</span></h1>
+    <div class="milestone">A birthday. A dream. A new ride.</div>
     <div class="subtitle">
-        The wait is almost over.
+        After all the waiting, it is finally happening — and on a milestone birthday that makes the moment even more special.
     </div>
 
-    <div class="delivery">
-        Delivery · 20 October 2026 · 11:00 AM IST
-    </div>
+    <div class="delivery">20 October 2026 · 11:00 AM IST · The Big Day</div>
 
     <div class="countdown">
-
-        <div class="unit">
-            <span class="number" id="days">00</span>
-            <span class="label">Days</span>
-        </div>
-
-        <div class="unit">
-            <span class="number" id="hours">00</span>
-            <span class="label">Hours</span>
-        </div>
-
-        <div class="unit">
-            <span class="number" id="minutes">00</span>
-            <span class="label">Minutes</span>
-        </div>
-
-        <div class="unit">
-            <span class="number" id="seconds">00</span>
-            <span class="label">Seconds</span>
-        </div>
-
+        <div class="unit"><span class="number" id="days">00</span><span class="label">Days</span></div>
+        <div class="unit"><span class="number" id="hours">00</span><span class="label">Hours</span></div>
+        <div class="unit"><span class="number" id="minutes">00</span><span class="label">Minutes</span></div>
+        <div class="unit"><span class="number" id="seconds">00</span><span class="label">Seconds</span></div>
     </div>
 
-    <div class="footer">
-        Counting down to your Meteor Supernova delivery.
-    </div>
-
+    <div class="footer">40 years. One unforgettable beginning. 🏍️</div>
 </main>
 
 <script>
-
-const target =
-    new Date("2026-10-20T11:00:00+05:30").getTime();
+const target = new Date("2026-10-20T11:00:00+05:30").getTime();
 
 function updateCountdown() {
-
     const now = Date.now();
     let diff = target - now;
 
     if (diff <= 0) {
-
         document.querySelector(".countdown").innerHTML =
-            '<div class="unit" style="width:260px;max-width:260px">' +
-            '<span class="number">🏍️</span>' +
-            '<span class="label">Delivery Day!</span>' +
-            '</div>';
-
+            '<div class="unit" style="width:260px;max-width:260px"><span class="number">🏍️🎉</span><span class="label">Happy 40th, Ajay — Ride Day!</span></div>';
         return;
     }
 
-    const days =
-        Math.floor(diff / 86400000);
-
+    const days = Math.floor(diff / 86400000);
     diff %= 86400000;
-
-    const hours =
-        Math.floor(diff / 3600000);
-
+    const hours = Math.floor(diff / 3600000);
     diff %= 3600000;
+    const minutes = Math.floor(diff / 60000);
+    const seconds = Math.floor((diff % 60000) / 1000);
 
-    const minutes =
-        Math.floor(diff / 60000);
-
-    const seconds =
-        Math.floor((diff % 60000) / 1000);
-
-    document.getElementById("days").textContent =
-        String(days).padStart(2, "0");
-
-    document.getElementById("hours").textContent =
-        String(hours).padStart(2, "0");
-
-    document.getElementById("minutes").textContent =
-        String(minutes).padStart(2, "0");
-
-    document.getElementById("seconds").textContent =
-        String(seconds).padStart(2, "0");
+    document.getElementById("days").textContent = String(days).padStart(2, "0");
+    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
 }
 
 updateCountdown();
-
 setInterval(updateCountdown, 1000);
 
+const confettiColors = ["#f5c36b", "#ffffff", "#d2d2d2"];
+for (let i = 0; i < 28; i++) {
+    const piece = document.createElement("div");
+    piece.className = "confetti";
+    piece.style.left = Math.random() * 100 + "vw";
+    piece.style.background = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+    piece.style.animationDuration = (5 + Math.random() * 6) + "s";
+    piece.style.animationDelay = (-Math.random() * 10) + "s";
+    piece.style.opacity = (0.3 + Math.random() * 0.6);
+    piece.style.transform = `rotate(${Math.random()*360}deg)`;
+    document.body.appendChild(piece);
+}
 </script>
-
 </body>
 </html>
