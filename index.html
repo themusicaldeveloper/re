@@ -1,244 +1,1918 @@
+html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ajay's Royal Enfield – 40th Birthday Countdown</title>
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>
+    Ajay's Royal Enfield – 40th Birthday Countdown
+</title>
+
 <style>
-* { box-sizing: border-box; }
-html, body {
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
     margin: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     color: white;
-    background: #080808;
+    background: #050505;
 }
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
 body {
+
     min-height: 100vh;
+
     position: relative;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 }
+
+
+/* =========================================================
+   BIKE BACKGROUND
+========================================================= */
+
 .background {
+
     position: fixed;
+
     inset: 0;
+
     z-index: 0;
+
+
+    /*
+        Less black overlay on the RIGHT side.
+
+        This makes the motorcycle much more visible.
+    */
+
     background-image:
-        linear-gradient(90deg, rgba(0,0,0,.84) 0%, rgba(0,0,0,.50) 40%, rgba(0,0,0,.14) 72%, rgba(0,0,0,.36) 100%),
-        linear-gradient(0deg, rgba(0,0,0,.62), rgba(0,0,0,.04) 55%, rgba(0,0,0,.34)),
-        url("https://royalenfieldmotorcycles.co.nz/wp-content/uploads/sites/2/2026/01/Meteor-Hero-1.png");
+
+        linear-gradient(
+            90deg,
+
+            rgba(0,0,0,.88) 0%,
+
+            rgba(0,0,0,.70) 28%,
+
+            rgba(0,0,0,.34) 48%,
+
+            rgba(0,0,0,.08) 67%,
+
+            rgba(0,0,0,.05) 82%,
+
+            rgba(0,0,0,.25) 100%
+        ),
+
+        linear-gradient(
+            0deg,
+
+            rgba(0,0,0,.58),
+
+            rgba(0,0,0,.02) 55%,
+
+            rgba(0,0,0,.28)
+        ),
+
+        url(
+        "https://royalenfieldmotorcycles.co.nz/wp-content/uploads/sites/2/2026/01/Meteor-Hero-1.png"
+        );
+
+
     background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+
+    background-position:
+        center center;
+
+    background-repeat:
+        no-repeat;
+
+
     transform: scale(1.02);
+
+
+    /*
+        Very slow cinematic movement
+    */
+
+    animation:
+        backgroundBreath 10s
+        ease-in-out
+        infinite alternate;
 }
+
+
+@keyframes backgroundBreath {
+
+    from {
+
+        transform:
+            scale(1.02);
+
+    }
+
+    to {
+
+        transform:
+            scale(1.045);
+
+    }
+
+}
+
+
+/* =========================================================
+   BIKE FOCUS VIGNETTE
+========================================================= */
+
 .background::after {
+
     content: "";
+
     position: absolute;
+
     inset: 0;
+
+
+    /*
+        The centre-right remains clear
+        where the motorcycle is located.
+    */
+
     background:
-        radial-gradient(circle at 72% 48%, transparent 0 20%, rgba(0,0,0,.28) 68%, rgba(0,0,0,.66) 100%);
+
+        radial-gradient(
+
+            ellipse at 72% 50%,
+
+            rgba(255,255,255,.02) 0%,
+
+            transparent 27%,
+
+            rgba(0,0,0,.12) 52%,
+
+            rgba(0,0,0,.58) 100%
+
+        );
 }
-.glow {
+
+
+/* =========================================================
+   MOTORCYCLE SPOTLIGHT
+========================================================= */
+
+.spotlight {
+
     position: fixed;
-    width: 440px;
-    height: 440px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,190,70,.15), transparent 68%);
-    filter: blur(5px);
+
     z-index: 1;
-    animation: pulseGlow 3.5s ease-in-out infinite;
+
     pointer-events: none;
+
+
+    width: 650px;
+
+    height: 900px;
+
+
+    top: -190px;
+
+    left: 55%;
+
+
+    transform-origin:
+        top center;
+
+
+    /*
+        Light cone
+    */
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            rgba(255,245,210,.22),
+
+            rgba(255,205,115,.13) 38%,
+
+            rgba(255,180,60,.05) 67%,
+
+            transparent 88%
+
+        );
+
+
+    clip-path:
+
+        polygon(
+            43% 0,
+            57% 0,
+            95% 100%,
+            5% 100%
+        );
+
+
+    filter:
+        blur(14px);
+
+
+    opacity: .8;
+
+
+    animation:
+
+        spotlightMove
+        7s
+        ease-in-out
+        infinite;
 }
-.glow.one { top: -130px; left: -100px; }
-.glow.two { right: -120px; bottom: -160px; animation-delay: 1.2s; }
-@keyframes pulseGlow {
-    0%,100% { transform: scale(.92); opacity: .55; }
-    50% { transform: scale(1.08); opacity: 1; }
+
+
+/*
+   Slow spotlight movement
+*/
+
+@keyframes spotlightMove {
+
+    0% {
+
+        transform:
+
+            rotate(-7deg)
+            translateX(-35px);
+
+        opacity: .52;
+
+    }
+
+
+    50% {
+
+        transform:
+
+            rotate(5deg)
+            translateX(38px);
+
+        opacity: .9;
+
+    }
+
+
+    100% {
+
+        transform:
+
+            rotate(-7deg)
+            translateX(-35px);
+
+        opacity: .52;
+
+    }
+
 }
-.confetti {
+
+
+/* =========================================================
+   BIKE WARM GLOW
+========================================================= */
+
+.bikeGlow {
+
     position: fixed;
-    top: -20px;
-    width: 7px;
-    height: 13px;
-    border-radius: 2px;
-    z-index: 2;
-    opacity: .75;
-    animation: fall linear infinite;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+
+    width: 620px;
+
+    height: 620px;
+
+
+    right: 1%;
+
+    top: 20%;
+
+
+    border-radius: 50%;
+
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            rgba(255,194,88,.20),
+
+            rgba(255,143,34,.09) 28%,
+
+            rgba(255,110,0,.025) 52%,
+
+            transparent 72%
+
+        );
+
+
+    filter:
+        blur(20px);
+
+
+    animation:
+
+        bikeGlowPulse
+        3.6s
+        ease-in-out
+        infinite;
 }
-@keyframes fall {
-    to { transform: translateY(110vh) rotate(720deg); }
+
+
+@keyframes bikeGlowPulse {
+
+    0%,
+    100% {
+
+        transform:
+            scale(.91);
+
+        opacity:
+            .50;
+
+    }
+
+
+    50% {
+
+        transform:
+            scale(1.08);
+
+        opacity:
+            1;
+
+    }
+
 }
-.content {
-    position: relative;
+
+
+/* =========================================================
+   DISCO LIGHTS
+========================================================= */
+
+.disco {
+
+    position: fixed;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+
+    width: 330px;
+
+    height: 330px;
+
+
+    border-radius: 50%;
+
+
+    filter:
+        blur(60px);
+
+
+    mix-blend-mode:
+        screen;
+
+
+    opacity: .13;
+}
+
+
+/*
+    Golden birthday light
+*/
+
+.disco.gold {
+
+    background:
+        #ffb11b;
+
+    right:
+        7%;
+
+    bottom:
+        -80px;
+
+
+    animation:
+
+        discoGold
+        5s
+        ease-in-out
+        infinite alternate;
+}
+
+
+@keyframes discoGold {
+
+    from {
+
+        transform:
+            translate(-80px,-20px)
+            scale(.8);
+
+    }
+
+    to {
+
+        transform:
+            translate(90px,-100px)
+            scale(1.35);
+
+    }
+
+}
+
+
+/*
+    Subtle blue light
+*/
+
+.disco.blue {
+
+    background:
+        #287fff;
+
+    right:
+        23%;
+
+    top:
+        5%;
+
+
+    animation:
+
+        discoBlue
+        6.5s
+        ease-in-out
+        infinite alternate;
+}
+
+
+@keyframes discoBlue {
+
+    from {
+
+        transform:
+            translate(-70px,10px)
+            scale(.7);
+
+    }
+
+    to {
+
+        transform:
+            translate(100px,110px)
+            scale(1.25);
+
+    }
+
+}
+
+
+/*
+    Subtle red light
+*/
+
+.disco.red {
+
+    background:
+        #ff2b20;
+
+    right:
+        -40px;
+
+    top:
+        35%;
+
+
+    animation:
+
+        discoRed
+        5.8s
+        ease-in-out
+        infinite alternate;
+}
+
+
+@keyframes discoRed {
+
+    from {
+
+        transform:
+            translate(-20px,-100px)
+            scale(.75);
+
+    }
+
+    to {
+
+        transform:
+            translate(-150px,90px)
+            scale(1.25);
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL LIGHT SPARKLES
+========================================================= */
+
+.sparkle {
+
+    position: fixed;
+
     z-index: 3;
-    width: min(1180px, 94vw);
-    padding: 40px;
-    text-align: left;
+
+    pointer-events: none;
+
+
+    width: 5px;
+
+    height: 5px;
+
+
+    border-radius:
+        50%;
+
+
+    background:
+        #ffd47b;
+
+
+    box-shadow:
+
+        0 0 7px #ffd47b,
+
+        0 0 17px
+        rgba(255,193,71,.8);
+
+
+    animation:
+
+        sparkleMove
+        linear
+        infinite;
 }
+
+
+@keyframes sparkleMove {
+
+    0% {
+
+        transform:
+            translateY(105vh)
+            scale(.4);
+
+        opacity: 0;
+
+    }
+
+
+    15% {
+
+        opacity: .9;
+
+    }
+
+
+    80% {
+
+        opacity: .7;
+
+    }
+
+
+    100% {
+
+        transform:
+            translateY(-20vh)
+            scale(1.25);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.content {
+
+    position:
+        relative;
+
+    z-index:
+        5;
+
+
+    width:
+        min(1180px, 94vw);
+
+
+    padding:
+        40px;
+
+
+    text-align:
+        left;
+
+
+    /*
+        Content occupies left side,
+        leaving motorcycle visible.
+    */
+
+    pointer-events:
+        none;
+}
+
+
+/* =========================================================
+   ROYAL ENFIELD
+========================================================= */
+
 .brand {
-    font-size: clamp(15px, 2vw, 21px);
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    opacity: .94;
-    margin-bottom: 10px;
-    font-weight: 700;
+
+    font-size:
+        clamp(16px, 2vw, 22px);
+
+
+    letter-spacing:
+        6px;
+
+
+    text-transform:
+        uppercase;
+
+
+    opacity:
+        .95;
+
+
+    margin-bottom:
+        13px;
+
+
+    font-weight:
+        700;
+
+
+    text-shadow:
+        0 3px 15px black;
 }
+
+
+/* =========================================================
+   AJAY 40
+========================================================= */
+
 .owner {
-    margin: 0 0 8px;
-    font-size: clamp(42px, 7vw, 84px);
-    line-height: .95;
-    letter-spacing: -2.5px;
-    text-transform: uppercase;
-    text-shadow: 0 5px 25px rgba(0,0,0,.72);
+
+    margin:
+        0 0 8px;
+
+
+    font-size:
+        clamp(44px, 6vw, 76px);
+
+
+    line-height:
+        .95;
+
+
+    letter-spacing:
+        -2px;
+
+
+    text-transform:
+        uppercase;
+
+
+    text-shadow:
+
+        0 5px 25px
+        rgba(0,0,0,.9);
 }
+
+
 .highlight {
-    color: #f5c36b;
+
+    color:
+        #f3c368;
+
+
+    text-shadow:
+
+        0 0 20px
+        rgba(243,195,104,.22);
 }
+
+
+/* =========================================================
+   MILESTONE TEXT
+========================================================= */
+
 .milestone {
-    margin: 14px 0 8px;
-    font-size: clamp(19px, 2.5vw, 30px);
-    font-weight: 700;
+
+    margin:
+        14px 0 7px;
+
+
+    font-size:
+        clamp(18px, 2vw, 27px);
+
+
+    font-weight:
+        700;
+
+
+    text-shadow:
+        0 3px 12px black;
 }
+
+
 .subtitle {
-    max-width: 660px;
-    margin: 6px 0 28px;
-    font-size: clamp(15px, 1.8vw, 21px);
-    line-height: 1.45;
-    color: rgba(255,255,255,.88);
+
+    max-width:
+        580px;
+
+
+    margin:
+        6px 0 24px;
+
+
+    font-size:
+        clamp(14px, 1.5vw, 18px);
+
+
+    line-height:
+        1.45;
+
+
+    color:
+        rgba(255,255,255,.82);
+
+
+    text-shadow:
+        0 2px 10px black;
 }
+
+
+/* =========================================================
+   DELIVERY PILL
+========================================================= */
+
 .delivery {
-    display: inline-block;
-    padding: 10px 16px;
-    margin-bottom: 18px;
-    border: 1px solid rgba(255,255,255,.3);
-    border-radius: 999px;
-    background: rgba(0,0,0,.30);
-    backdrop-filter: blur(8px);
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    white-space: nowrap;
+
+    display:
+        inline-block;
+
+
+    padding:
+        9px 15px;
+
+
+    margin-bottom:
+        15px;
+
+
+    border:
+
+        1px solid
+        rgba(255,255,255,.28);
+
+
+    border-radius:
+        999px;
+
+
+    background:
+        rgba(0,0,0,.38);
+
+
+    backdrop-filter:
+        blur(8px);
+
+
+    font-size:
+        11px;
+
+
+    letter-spacing:
+        1px;
+
+
+    text-transform:
+        uppercase;
+
+
+    white-space:
+        nowrap;
 }
+
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
 .countdown {
-    display: flex;
-    gap: 9px;
-    flex-wrap: nowrap;
-    align-items: center;
+
+    display:
+        flex;
+
+
+    gap:
+        8px;
+
+
+    flex-wrap:
+        nowrap;
+
+
+    align-items:
+        center;
 }
+
+
 .unit {
-    width: 94px;
-    min-width: 94px;
-    padding: 12px 7px 10px;
-    border-radius: 14px;
-    background: rgba(0,0,0,.43);
-    border: 1px solid rgba(255,255,255,.18);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 12px 35px rgba(0,0,0,.28);
-    text-align: center;
+
+    width:
+        88px;
+
+
+    min-width:
+        88px;
+
+
+    padding:
+        11px 6px 9px;
+
+
+    border-radius:
+        13px;
+
+
+    background:
+        rgba(0,0,0,.48);
+
+
+    border:
+
+        1px solid
+        rgba(255,255,255,.20);
+
+
+    backdrop-filter:
+        blur(11px);
+
+
+    box-shadow:
+
+        0 10px 30px
+        rgba(0,0,0,.35);
+
+
+    text-align:
+        center;
 }
+
+
 .number {
-    display: block;
-    font-size: 35px;
-    font-weight: 800;
-    line-height: 1;
+
+    display:
+        block;
+
+
+    font-size:
+        33px;
+
+
+    font-weight:
+        800;
+
+
+    line-height:
+        1;
 }
+
+
 .label {
-    display: block;
-    margin-top: 6px;
-    font-size: 8px;
-    letter-spacing: 1.3px;
-    text-transform: uppercase;
-    opacity: .7;
+
+    display:
+        block;
+
+
+    margin-top:
+        5px;
+
+
+    font-size:
+        7px;
+
+
+    letter-spacing:
+        1.2px;
+
+
+    text-transform:
+        uppercase;
+
+
+    opacity:
+        .7;
 }
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
 .footer {
-    margin-top: 18px;
-    font-size: 12px;
-    opacity: .72;
-    letter-spacing: .4px;
+
+    margin-top:
+        16px;
+
+
+    font-size:
+        11px;
+
+
+    opacity:
+        .72;
+
+
+    letter-spacing:
+        .5px;
 }
-@media (max-width: 700px) {
-    .content { padding: 20px; width: 100%; text-align: center; }
-    .background { background-position: 62% center; }
-    .owner { font-size: clamp(34px, 11vw, 56px); margin-inline: auto; }
-    .subtitle { margin-left: auto; margin-right: auto; }
-    .delivery { font-size: 9px; padding: 8px 10px; letter-spacing: .6px; }
-    .countdown { width: 100%; justify-content: center; gap: 5px; }
-    .unit { width: 21vw; min-width: 0; max-width: 80px; padding: 10px 3px 8px; }
-    .number { font-size: clamp(24px, 8vw, 33px); }
-    .label { font-size: 6.5px; letter-spacing: .7px; }
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media
+(max-width: 700px) {
+
+
+    .content {
+
+        padding:
+            18px;
+
+
+        width:
+            100%;
+
+
+        text-align:
+            center;
+
+
+        /*
+            Content positioned toward bottom
+            to keep bike visible.
+        */
+
+        align-self:
+            flex-end;
+
+
+        padding-bottom:
+            42px;
+    }
+
+
+    .background {
+
+        /*
+            Move motorcycle toward centre
+            on smaller screens.
+        */
+
+        background-position:
+            64% center;
+    }
+
+
+    .spotlight {
+
+        left:
+            35%;
+
+
+        width:
+            450px;
+
+
+        opacity:
+            .55;
+    }
+
+
+    .bikeGlow {
+
+        width:
+            430px;
+
+
+        height:
+            430px;
+
+
+        top:
+            21%;
+
+
+        right:
+            -80px;
+    }
+
+
+    .owner {
+
+        font-size:
+            clamp(33px, 10vw, 49px);
+
+
+        margin-inline:
+            auto;
+    }
+
+
+    .milestone {
+
+        font-size:
+            16px;
+    }
+
+
+    .subtitle {
+
+        display:
+            none;
+    }
+
+
+    .delivery {
+
+        margin-top:
+            7px;
+
+
+        font-size:
+            8px;
+
+
+        padding:
+            7px 9px;
+
+
+        letter-spacing:
+            .5px;
+    }
+
+
+    .countdown {
+
+        width:
+            100%;
+
+
+        justify-content:
+            center;
+
+
+        gap:
+            5px;
+    }
+
+
+    .unit {
+
+        width:
+            21vw;
+
+
+        min-width:
+            0;
+
+
+        max-width:
+            78px;
+
+
+        padding:
+            9px 3px 7px;
+    }
+
+
+    .number {
+
+        font-size:
+            clamp(23px, 7vw, 31px);
+    }
+
+
+    .label {
+
+        font-size:
+            6px;
+    }
+
+
+    .footer {
+
+        font-size:
+            9px;
+
+
+        margin-top:
+            12px;
+    }
+
 }
+
 </style>
 </head>
+
+
 <body>
+
+
+<!-- Bike image -->
+
 <div class="background"></div>
-<div class="glow one"></div>
-<div class="glow two"></div>
+
+
+<!-- Cinematic bike spotlight -->
+
+<div class="spotlight"></div>
+
+
+<!-- Warm glow around motorcycle -->
+
+<div class="bikeGlow"></div>
+
+
+<!-- Disco / celebration lamps -->
+
+<div class="disco gold"></div>
+
+<div class="disco blue"></div>
+
+<div class="disco red"></div>
+
+
+
+<!-- =====================================================
+     CONTENT
+====================================================== -->
 
 <main class="content">
-    <div class="brand">Royal Enfield</div>
-    <h1 class="owner">Ajay's <span class="highlight">40th</span></h1>
-    <div class="milestone">A birthday. A dream. A new ride.</div>
-    <div class="subtitle">
-        After all the waiting, it is finally happening — and on a milestone birthday that makes the moment even more special.
+
+
+    <div class="brand">
+
+        Royal Enfield
+
     </div>
 
-    <div class="delivery">20 October 2026 · 11:00 AM IST · The Big Day</div>
+
+    <h1 class="owner">
+
+        Ajay's
+
+        <span class="highlight">
+
+            40th
+
+        </span>
+
+    </h1>
+
+
+    <div class="milestone">
+
+        A birthday. A dream. A new ride.
+
+    </div>
+
+
+    <div class="subtitle">
+
+        After all the waiting,
+        it is finally happening —
+        and on a milestone birthday
+        that makes the moment
+        even more special.
+
+    </div>
+
+
+    <div class="delivery">
+
+        20 October 2026
+        ·
+        11:00 AM IST
+        ·
+        The Big Day
+
+    </div>
+
+
 
     <div class="countdown">
-        <div class="unit"><span class="number" id="days">00</span><span class="label">Days</span></div>
-        <div class="unit"><span class="number" id="hours">00</span><span class="label">Hours</span></div>
-        <div class="unit"><span class="number" id="minutes">00</span><span class="label">Minutes</span></div>
-        <div class="unit"><span class="number" id="seconds">00</span><span class="label">Seconds</span></div>
+
+
+        <div class="unit">
+
+            <span
+                class="number"
+                id="days">
+
+                00
+
+            </span>
+
+            <span class="label">
+
+                Days
+
+            </span>
+
+        </div>
+
+
+
+        <div class="unit">
+
+            <span
+                class="number"
+                id="hours">
+
+                00
+
+            </span>
+
+            <span class="label">
+
+                Hours
+
+            </span>
+
+        </div>
+
+
+
+        <div class="unit">
+
+            <span
+                class="number"
+                id="minutes">
+
+                00
+
+            </span>
+
+            <span class="label">
+
+                Minutes
+
+            </span>
+
+        </div>
+
+
+
+        <div class="unit">
+
+            <span
+                class="number"
+                id="seconds">
+
+                00
+
+            </span>
+
+            <span class="label">
+
+                Seconds
+
+            </span>
+
+        </div>
+
+
     </div>
 
-    <div class="footer">40 years. One unforgettable beginning. 🏍️</div>
+
+
+    <div class="footer">
+
+        40 years.
+        One unforgettable beginning.
+        🏍️
+
+    </div>
+
+
 </main>
 
+
+
 <script>
-const target = new Date("2026-10-20T11:00:00+05:30").getTime();
+
+/* =========================================================
+   DELIVERY SETTINGS
+========================================================= */
+
+
+/*
+    Delivery:
+
+    20 October 2026
+    11:00 AM
+    India
+*/
+
+const deliveryYear  = 2026;
+
+const deliveryMonth = 9;
+
+
+/*
+    JavaScript months:
+
+    January  = 0
+    October  = 9
+*/
+
+const deliveryDay = 20;
+
+const deliveryHour = 11;
+
+const deliveryMinute = 0;
+
+
+
+/* =========================================================
+   DELIVERY DATE
+========================================================= */
+
+const deliveryTime = new Date(
+
+    deliveryYear,
+
+    deliveryMonth,
+
+    deliveryDay,
+
+    deliveryHour,
+
+    deliveryMinute,
+
+    0
+
+);
+
+
+const deliveryMidnight = new Date(
+
+    deliveryYear,
+
+    deliveryMonth,
+
+    deliveryDay,
+
+    0,
+
+    0,
+
+    0
+
+);
+
+
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
 
 function updateCountdown() {
-    const now = Date.now();
-    let diff = target - now;
 
-    if (diff <= 0) {
-        document.querySelector(".countdown").innerHTML =
-            '<div class="unit" style="width:260px;max-width:260px"><span class="number">🏍️🎉</span><span class="label">Happy 40th, Ajay — Ride Day!</span></div>';
+
+    const now =
+        new Date();
+
+
+    /*
+        Delivery finished
+    */
+
+    if (
+        now.getTime()
+        >=
+        deliveryTime.getTime()
+    ) {
+
+
+        document
+        .querySelector(".countdown")
+        .innerHTML = `
+
+            <div
+                class="unit"
+                style="
+                    width:300px;
+                    max-width:300px;
+                "
+            >
+
+                <span
+                    class="number"
+                    style="
+                        font-size:28px;
+                    "
+                >
+
+                    🏍️ 🎉
+
+                </span>
+
+                <span
+                    class="label"
+                    style="
+                        font-size:10px;
+                    "
+                >
+
+                    HAPPY 40TH AJAY
+                    ·
+                    RIDE DAY!
+
+                </span>
+
+            </div>
+
+        `;
+
+
         return;
     }
 
-    const days = Math.floor(diff / 86400000);
-    diff %= 86400000;
-    const hours = Math.floor(diff / 3600000);
-    diff %= 3600000;
-    const minutes = Math.floor(diff / 60000);
-    const seconds = Math.floor((diff % 60000) / 1000);
 
-    document.getElementById("days").textContent = String(days).padStart(2, "0");
-    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-    document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-    document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+
+    /* =====================================================
+       TODAY AT 12:00 AM
+    ===================================================== */
+
+
+    const todayMidnight =
+        new Date(
+
+            now.getFullYear(),
+
+            now.getMonth(),
+
+            now.getDate(),
+
+            0,
+
+            0,
+
+            0
+
+        );
+
+
+
+    /*
+        Number of CALENDAR DAYS
+        until delivery date.
+
+        IMPORTANT:
+
+        This number changes at
+        12:00 AM midnight.
+
+        It does NOT wait until
+        11:00 AM anymore.
+    */
+
+    let days = Math.round(
+
+        (
+            deliveryMidnight.getTime()
+            -
+            todayMidnight.getTime()
+        )
+
+        /
+
+        86400000
+
+    );
+
+
+
+    let hours;
+
+    let minutes;
+
+    let seconds;
+
+
+
+    /* =====================================================
+       BEFORE DELIVERY DAY
+    ===================================================== */
+
+    if (
+        todayMidnight.getTime()
+        <
+        deliveryMidnight.getTime()
+    ) {
+
+
+        /*
+            Hours / minutes / seconds
+            count to NEXT MIDNIGHT.
+
+            Therefore Days changes
+            exactly at midnight.
+        */
+
+
+        const nextMidnight =
+            new Date(
+
+                now.getFullYear(),
+
+                now.getMonth(),
+
+                now.getDate() + 1,
+
+                0,
+
+                0,
+
+                0
+
+            );
+
+
+        let clockDiff =
+
+            nextMidnight.getTime()
+            -
+            now.getTime();
+
+
+
+        hours =
+
+            Math.floor(
+
+                clockDiff
+                /
+                3600000
+
+            );
+
+
+        clockDiff %=
+
+            3600000;
+
+
+
+        minutes =
+
+            Math.floor(
+
+                clockDiff
+                /
+                60000
+
+            );
+
+
+        seconds =
+
+            Math.floor(
+
+                (
+                    clockDiff
+                    %
+                    60000
+                )
+
+                /
+
+                1000
+
+            );
+
+    }
+
+
+    /* =====================================================
+       DELIVERY DAY
+    ===================================================== */
+
+    else {
+
+
+        /*
+            At 12:00 AM
+            on 20 October:
+
+            Days = 00
+
+            Then clock counts:
+
+            11 Hours
+            00 Minutes
+            00 Seconds
+
+            until delivery.
+        */
+
+
+        days = 0;
+
+
+        let clockDiff =
+
+            deliveryTime.getTime()
+            -
+            now.getTime();
+
+
+
+        hours =
+
+            Math.floor(
+
+                clockDiff
+                /
+                3600000
+
+            );
+
+
+        clockDiff %=
+
+            3600000;
+
+
+
+        minutes =
+
+            Math.floor(
+
+                clockDiff
+                /
+                60000
+
+            );
+
+
+        seconds =
+
+            Math.floor(
+
+                (
+                    clockDiff
+                    %
+                    60000
+                )
+
+                /
+
+                1000
+
+            );
+
+    }
+
+
+
+    /* =====================================================
+       DISPLAY
+    ===================================================== */
+
+
+    document
+    .getElementById("days")
+    .textContent =
+
+        String(days)
+        .padStart(2,"0");
+
+
+
+    document
+    .getElementById("hours")
+    .textContent =
+
+        String(hours)
+        .padStart(2,"0");
+
+
+
+    document
+    .getElementById("minutes")
+    .textContent =
+
+        String(minutes)
+        .padStart(2,"0");
+
+
+
+    document
+    .getElementById("seconds")
+    .textContent =
+
+        String(seconds)
+        .padStart(2,"0");
+
 }
+
+
+
+/*
+    Initial update immediately
+*/
 
 updateCountdown();
-setInterval(updateCountdown, 1000);
 
-const confettiColors = ["#f5c36b", "#ffffff", "#d2d2d2"];
-for (let i = 0; i < 28; i++) {
-    const piece = document.createElement("div");
-    piece.className = "confetti";
-    piece.style.left = Math.random() * 100 + "vw";
-    piece.style.background = confettiColors[Math.floor(Math.random() * confettiColors.length)];
-    piece.style.animationDuration = (5 + Math.random() * 6) + "s";
-    piece.style.animationDelay = (-Math.random() * 10) + "s";
-    piece.style.opacity = (0.3 + Math.random() * 0.6);
-    piece.style.transform = `rotate(${Math.random()*360}deg)`;
-    document.body.appendChild(piece);
+
+
+/*
+    Update every second
+*/
+
+setInterval(
+
+    updateCountdown,
+
+    1000
+
+);
+
+
+
+/* =========================================================
+   FLOATING CELEBRATION LIGHTS
+========================================================= */
+
+
+/*
+    Much lighter than the earlier
+    confetti.
+
+    This keeps the motorcycle
+    as the hero.
+*/
+
+for (
+    let i = 0;
+    i < 18;
+    i++
+) {
+
+
+    const sparkle =
+        document.createElement(
+            "div"
+        );
+
+
+    sparkle.className =
+        "sparkle";
+
+
+    sparkle.style.left =
+
+        (
+            45
+            +
+            Math.random() * 55
+        )
+
+        +
+
+        "vw";
+
+
+    sparkle.style.animationDuration =
+
+        (
+            5
+            +
+            Math.random() * 7
+        )
+
+        +
+
+        "s";
+
+
+    sparkle.style.animationDelay =
+
+        (
+            -
+            Math.random() * 10
+        )
+
+        +
+
+        "s";
+
+
+    sparkle.style.opacity =
+
+        (
+            .3
+            +
+            Math.random() * .7
+        );
+
+
+    sparkle.style.width =
+
+        (
+            2
+            +
+            Math.random() * 5
+        )
+
+        +
+
+        "px";
+
+
+    sparkle.style.height =
+
+        sparkle.style.width;
+
+
+    document
+    .body
+    .appendChild(
+        sparkle
+    );
+
 }
+
 </script>
+
+
 </body>
 </html>
+
