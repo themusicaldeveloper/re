@@ -1,4 +1,3 @@
-html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1176,6 +1175,319 @@ body {
 
 }
 
+
+/* =========================================================
+   VIBRANT UPDATE
+   - Countdown moved above the message
+   - Large calendar-day display
+   - Continuous bike rotation / cinematic movement
+   - Stronger party lighting
+========================================================= */
+
+.background {
+    transform-origin: 72% 52%;
+    animation: bikePartyMotion 8s ease-in-out infinite alternate !important;
+    will-change: transform, background-position;
+}
+
+@keyframes bikePartyMotion {
+    0% {
+        transform: scale(1.055) rotate(-0.85deg) translate3d(-0.7%, 0.2%, 0);
+        background-position: 49% 50%;
+    }
+    35% {
+        transform: scale(1.085) rotate(0.25deg) translate3d(0.2%, -0.35%, 0);
+        background-position: 50.5% 49.5%;
+    }
+    70% {
+        transform: scale(1.105) rotate(0.95deg) translate3d(0.8%, -0.1%, 0);
+        background-position: 52% 50%;
+    }
+    100% {
+        transform: scale(1.075) rotate(-0.2deg) translate3d(0.1%, 0.35%, 0);
+        background-position: 50% 51%;
+    }
+}
+
+.content {
+    justify-content: flex-start;
+    padding-top: clamp(26px, 5vh, 58px);
+}
+
+/* Put countdown at the top and make Days the hero */
+.countdown {
+    order: -10;
+    display: grid !important;
+    grid-template-columns: repeat(3, 92px);
+    gap: 8px !important;
+    width: max-content;
+    margin: 0 0 26px 0;
+    padding: 14px 15px 13px;
+    border-radius: 22px;
+    border: 1px solid rgba(255,255,255,.20);
+    background: linear-gradient(135deg, rgba(0,0,0,.62), rgba(22,22,22,.34));
+    backdrop-filter: blur(14px);
+    box-shadow:
+        0 18px 55px rgba(0,0,0,.46),
+        0 0 38px rgba(255,177,45,.08);
+    animation: countdownGlow 3s ease-in-out infinite;
+}
+
+@keyframes countdownGlow {
+    0%,100% {
+        box-shadow:
+            0 18px 55px rgba(0,0,0,.46),
+            0 0 20px rgba(255,177,45,.06);
+    }
+    50% {
+        box-shadow:
+            0 20px 65px rgba(0,0,0,.52),
+            0 0 46px rgba(255,177,45,.18);
+    }
+}
+
+.countdown .unit {
+    width: 92px;
+    min-width: 92px;
+    padding: 10px 6px 8px;
+    background: rgba(255,255,255,.055);
+    border-color: rgba(255,255,255,.13);
+    box-shadow: none;
+}
+
+/* DAYS on its own bold row */
+.countdown .unit:first-child {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 11px;
+    padding: 7px 12px 10px;
+    background: transparent;
+    border: 0;
+}
+
+.countdown .unit:first-child .number {
+    font-size: clamp(60px, 7vw, 92px);
+    font-weight: 900;
+    letter-spacing: -4px;
+    line-height: .88;
+    color: #fff;
+    text-shadow:
+        0 0 25px rgba(255,209,102,.22),
+        0 4px 20px rgba(0,0,0,.75);
+}
+
+.countdown .unit:first-child .label {
+    margin-top: 0;
+    font-size: clamp(16px, 1.8vw, 23px);
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #ffd166;
+    opacity: 1;
+}
+
+.countdown .unit:not(:first-child) .number {
+    font-size: 31px;
+}
+
+.countdown .unit:not(:first-child) .label {
+    font-size: 7px;
+}
+
+/* Delivery date sits just below the main story now */
+.delivery {
+    box-shadow: 0 0 24px rgba(255,190,70,.08);
+}
+
+/* Stronger moving spotlight */
+.spotlight {
+    opacity: .95;
+    filter: blur(11px);
+    animation: spotlightPartyMove 4.2s ease-in-out infinite !important;
+}
+
+@keyframes spotlightPartyMove {
+    0%,100% {
+        transform: rotate(-10deg) translateX(-80px) scaleX(.90);
+        opacity: .48;
+    }
+    50% {
+        transform: rotate(9deg) translateX(85px) scaleX(1.15);
+        opacity: 1;
+    }
+}
+
+.bikeGlow {
+    animation: bikeGlowPartyPulse 2.35s ease-in-out infinite !important;
+}
+
+@keyframes bikeGlowPartyPulse {
+    0%,100% {
+        transform: scale(.88);
+        opacity: .52;
+        filter: blur(22px);
+    }
+    50% {
+        transform: scale(1.16);
+        opacity: 1;
+        filter: blur(28px);
+    }
+}
+
+/* Brighter disco lamps */
+.disco {
+    opacity: .22;
+    filter: blur(52px);
+}
+
+.disco.gold {
+    animation-duration: 3.8s;
+}
+.disco.blue {
+    opacity: .19;
+    animation-duration: 4.3s;
+}
+.disco.red {
+    opacity: .18;
+    animation-duration: 3.9s;
+}
+
+/* Moving party beams */
+.party-beam {
+    position: fixed;
+    z-index: 2;
+    top: -28vh;
+    width: 15vw;
+    min-width: 120px;
+    height: 145vh;
+    pointer-events: none;
+    transform-origin: 50% 0%;
+    mix-blend-mode: screen;
+    filter: blur(11px);
+    opacity: .23;
+}
+
+.party-beam::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(44% 0, 56% 0, 100% 100%, 0 100%);
+}
+
+.beam-one {
+    left: 49%;
+    animation: beamSweepOne 5s ease-in-out infinite alternate;
+}
+.beam-one::after {
+    background: linear-gradient(to bottom, rgba(255,215,100,.55), rgba(255,144,34,.12), transparent 78%);
+}
+
+.beam-two {
+    left: 69%;
+    animation: beamSweepTwo 5.8s ease-in-out infinite alternate;
+}
+.beam-two::after {
+    background: linear-gradient(to bottom, rgba(65,145,255,.48), rgba(65,145,255,.09), transparent 76%);
+}
+
+.beam-three {
+    left: 82%;
+    animation: beamSweepThree 4.6s ease-in-out infinite alternate;
+}
+.beam-three::after {
+    background: linear-gradient(to bottom, rgba(255,68,205,.42), rgba(255,68,205,.08), transparent 74%);
+}
+
+@keyframes beamSweepOne {
+    from { transform: rotate(-18deg) translateX(-90px); }
+    to   { transform: rotate(10deg) translateX(130px); }
+}
+@keyframes beamSweepTwo {
+    from { transform: rotate(13deg) translateX(120px); }
+    to   { transform: rotate(-17deg) translateX(-120px); }
+}
+@keyframes beamSweepThree {
+    from { transform: rotate(-9deg) translateX(40px); }
+    to   { transform: rotate(17deg) translateX(-130px); }
+}
+
+/* A subtle rotating disco-ball halo above the bike */
+.disco-ball {
+    position: fixed;
+    z-index: 2;
+    right: 12%;
+    top: 7%;
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: .42;
+    background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.95), transparent 6%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.16) 0 2px, transparent 2px 10px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.13) 0 2px, transparent 2px 10px),
+        radial-gradient(circle, rgba(255,209,102,.26), rgba(60,80,140,.12) 55%, transparent 72%);
+    box-shadow:
+        0 0 25px rgba(255,255,255,.16),
+        0 0 58px rgba(80,150,255,.12);
+    animation: discoBallSpin 5s linear infinite;
+}
+
+@keyframes discoBallSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* More vivid particles */
+.sparkle {
+    box-shadow:
+        0 0 9px currentColor,
+        0 0 20px currentColor !important;
+}
+
+@media (max-width: 700px) {
+    .content {
+        justify-content: space-between !important;
+        padding-top: 20px !important;
+    }
+
+    .countdown {
+        margin: 0 auto 18px;
+        grid-template-columns: repeat(3, minmax(70px, 1fr));
+        width: min(330px, 94vw);
+        padding: 11px 11px 10px;
+    }
+
+    .countdown .unit {
+        width: auto;
+        min-width: 0;
+        max-width: none;
+    }
+
+    .countdown .unit:first-child .number {
+        font-size: clamp(54px, 17vw, 78px);
+    }
+
+    .countdown .unit:first-child .label {
+        font-size: 14px;
+        letter-spacing: 3px;
+    }
+
+    .party-beam {
+        opacity: .14;
+    }
+
+    .disco-ball {
+        width: 74px;
+        height: 74px;
+        right: 7%;
+        top: 12%;
+        opacity: .30;
+    }
+}
+
 </style>
 </head>
 
@@ -1205,6 +1517,10 @@ body {
 <div class="disco blue"></div>
 
 <div class="disco red"></div>
+<div class="party-beam beam-one"></div>
+<div class="party-beam beam-two"></div>
+<div class="party-beam beam-three"></div>
+<div class="disco-ball"></div>
 
 
 
@@ -1214,58 +1530,7 @@ body {
 
 <main class="content">
 
-
-    <div class="brand">
-
-        Royal Enfield
-
-    </div>
-
-
-    <h1 class="owner">
-
-        Ajay's
-
-        <span class="highlight">
-
-            40th
-
-        </span>
-
-    </h1>
-
-
-    <div class="milestone">
-
-        A birthday. A dream. A new ride.
-
-    </div>
-
-
-    <div class="subtitle">
-
-        After all the waiting,
-        it is finally happening —
-        and on a milestone birthday
-        that makes the moment
-        even more special.
-
-    </div>
-
-
-    <div class="delivery">
-
-        20 October 2026
-        ·
-        11:00 AM IST
-        ·
-        The Big Day
-
-    </div>
-
-
-
-    <div class="countdown">
+<div class="countdown">
 
 
         <div class="unit">
@@ -1346,6 +1611,57 @@ body {
 
         </div>
 
+
+    </div>
+
+
+
+
+    <div class="brand">
+
+        Royal Enfield
+
+    </div>
+
+
+    <h1 class="owner">
+
+        Ajay's
+
+        <span class="highlight">
+
+            40th
+
+        </span>
+
+    </h1>
+
+
+    <div class="milestone">
+
+        A birthday. A dream. A new ride.
+
+    </div>
+
+
+    <div class="subtitle">
+
+        After all the waiting,
+        it is finally happening —
+        and on a milestone birthday
+        that makes the moment
+        even more special.
+
+    </div>
+
+
+    <div class="delivery">
+
+        20 October 2026
+        ·
+        11:00 AM IST
+        ·
+        The Big Day
 
     </div>
 
@@ -1822,7 +2138,7 @@ setInterval(
 
 for (
     let i = 0;
-    i < 18;
+    i < 36;
     i++
 ) {
 
@@ -1910,9 +2226,31 @@ for (
 
 }
 
+
+/* Give the floating celebration lights vibrant rotating colors */
+const vibrantSparkleColors = [
+    "#ffd166",
+    "#ffffff",
+    "#ff9f1c",
+    "#4da3ff",
+    "#ff4fd8",
+    "#ff4b3e"
+];
+
+document
+.querySelectorAll(".sparkle")
+.forEach((sparkle, index) => {
+    const color =
+        vibrantSparkleColors[
+            index % vibrantSparkleColors.length
+        ];
+
+    sparkle.style.background = color;
+    sparkle.style.color = color;
+});
+
 </script>
 
 
 </body>
 </html>
-
